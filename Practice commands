@@ -1,0 +1,17 @@
+// Below are the k8s commands using in our project
+$ kubectl get pods -A -o wide     //List all pods in all namespaces, -o wide --Provides detailed output including node information 
+
+$ kubectl get nodes -Ao wide
+$ kubectl get pods --all-namespaces | grep <node-name>   //To list all the pods on specific node 
+$ kubectl logs <pod-name> 
+$ kubectl describe <po-name>    //To check the events
+$ kubectl exec -it <pod-name> -- /bin/bash   //To get interactive shell in k8s pod.
+$ kubectl exec -it <pod-name> -n <namespace> -- /bin/bash     //On specific namespace pod
+$ kubectl exec -it <pod-name> -c <container-name> -- /bin/bash   //If pod has more than one container
+$ kubectl exec -it <pod-name> -c <container-name> -n <namespcace> -- /bin/bash  
+$ kubectl get rs -A -o wide     ---> List all replicas from all namespaces
+$ kubectl get rs -A -o wide | grep <node1>
+$ kubectl get pods -o wide    //To check where the replica(pod)s are running
+
+$ kubectl run nginx-pod --image=nginx:latest --port=80     //Binding port inside the container
+$ kubectl run nginx-pod --image=nginx:latest --port=80 --restart=Never     //--restart=Never --> Ensures it runs as pod not a deployement or replicaset
