@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: deployment
+metadata:
+    name: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+     matchlabels:
+        app: nginx
+   template:
+      metadata:
+         labels:
+            app: nginx
+      spec:
+         containers:
+            - name: nginx
+              image: nginx:latest
+              ports:
+                 - containerPort:80
+
+# Replicas: Number of pods to run
+# Selector: Ensure the pods managed by the deployment match the label sector
+# Template: The pod template that defines the Pod's spec, including container image, ports etc
+# kubectl apply -f deployment nginx-deployment  
+# kubectl scale deployment nginx-deployment --replicas=5    //Scalling deployment
+# kubectl get deployments 
+# kubectl describe deployment nginx-deployment     //Viewing deployments
+# kubectl set image deployment/nginx-deployment nginx=nginx:1..1.9   //To update the container image (e.g., to a new version)
+# kubectl rollout undo deployment/nginx-deployment    //If the update fails, you can roll back to a previous version:
+
+     
