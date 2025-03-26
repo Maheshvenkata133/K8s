@@ -24,8 +24,16 @@ spec:
 # kubectl apply -f deployment nginx-deployment  
 # kubectl scale deployment nginx-deployment --replicas=5    //Scalling deployment
 # kubectl get deployments 
+# kubectl get deployments --all-namespaces     //to check the deployments on which namespaces
 # kubectl describe deployment nginx-deployment     //Viewing deployments
 # kubectl set image deployment/nginx-deployment nginx=nginx:1..1.9   //To update the container image (e.g., to a new version)
 # kubectl rollout undo deployment/nginx-deployment    //If the update fails, you can roll back to a previous version:
+
+##Draining nodes:
+# kubectl cordon <node-name>     // New pods won't schedule on this node
+# kubectl get nodes /verify the node ready status
+# kubectl drain --ignore-daemonsets --delete-local-data     //It will evict all the pods on this node and re-schedule to another nodes.
+# kubecctl uncordon <node-name> 
+
 
      
