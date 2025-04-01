@@ -1,0 +1,24 @@
+//This is for zero time upgrade for deployment.
+
+$ kubectl get all
+$ kubectl create deploy nginx --image=nginx:latest --port=80
+$ kubectl get all       //with replica one
+$ kubectl scale deploy nginx --replicas=5 
+$ kubectl get po 
+$ kubectl describe po <pod-name>     //check the image version.
+$ kubectl rollout status deploy nginx
+$ kubectl rollout history deploy nginx
+// Now I am releasing new image to the available pods
+$ kubectl get po 
+$ kubectl set image deploy nginx nginx=nginx:1.7.9 --record=2
+$ kubectl get all
+$ kubectl get po
+$ kubectl describe po <pod-name>     //Check the image version now.
+$ kubectl rollout status deploy nginx
+$ kubectl rollout history deploy nginx     //Check the revision history
+$ kubectl get all
+// Reverting back the changes
+$ kubectl rollout undo deploy nginx   //it will revert back to previous revision by default
+$ kubectl rollout undo deploy nginx to-revision=2
+$ kubectl rollout status deploy nginx
+$ kubectl get all 
