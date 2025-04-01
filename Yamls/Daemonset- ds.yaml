@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Daemonset
+metadata:
+  name: ngixn-pod
+  labels:
+    app: nginx
+spec:
+  selector:
+    matchlabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+spec:
+  containers:
+  - image: nginx:latest
+    name: nginx-pod
+    ports:
+    - contianerPort: 80
+
+
+//$ kubectl apply -f ds.yaml
+//$ kubectl get ds
+//$ kubectl get po -o wide   ---> Can see one pod on each node
+//$ kubectl delete po <pod-name>   --> If we try to delete the pod, immediately new pod will comeup
+//$ kubectl get po 
+//$ kubectl delete ds <ds-name>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
