@@ -22,3 +22,28 @@ $ kubectl describe po <pod-name>
 $ kubectl -n <name-space> logs <pod-name>
 $ kubectl -n <name-space> exec -it <pod-name> --/bin/sh    // To enter into the pod
 $ kubectl -n <name-space> exec -it <pod-name> -c <container-name> --/bin/bash     //To enter into the specific container in a pod.
+-------------------------------------------------------------------------------
+Before doing maintance for the servers:
+//$ kubectl get no
+//$ kubectl cordon <node-name>    ---> Scheduling disabled
+//$ kubectl get nodes
+//$ kubectl drain no <node-name> --ignore-daemons --delete-emptydir-data 
+This will evict all non-daemonset pods and reschedule them on other nodes.
+--ignore-daemonsets → Keeps daemonset pods running.
+--delete-emptydir-data → Deletes pods using emptyDir volumes.
+// $ kubectl get nodes
+
+//$ kubectl uncordon <node-name>   --> Now it is ready for scheduling
+//$ kubectl get nodes
+
+
+
+
+
+
+
+
+
+
+
+
