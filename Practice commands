@@ -15,3 +15,10 @@ $ kubectl get pods -o wide    //To check where the replica(pod)s are running
 
 $ kubectl run nginx-pod --image=nginx:latest --port=80     //Binding port inside the container
 $ kubectl run nginx-pod --image=nginx:latest --port=80 --restart=Never     //--restart=Never --> Ensures it runs as pod not a deployement or replicaset
+-----------------------------------------------------------------------------
+Debugging:
+$ kubectl -n <name-space> describe pod <pod-name>         // To List the containers in the pod from specific namespace.
+$ kubectl describe po <pod-name>
+$ kubectl -n <name-space> logs <pod-name>
+$ kubectl -n <name-space> exec -it <pod-name> --/bin/sh    // To enter into the pod
+$ kubectl -n <name-space> exec -it <pod-name> -c <container-name> --/bin/bash     //To enter into the specific container in a pod.
