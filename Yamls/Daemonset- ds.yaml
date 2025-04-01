@@ -26,9 +26,7 @@ spec:
 //$ kubectl delete po <pod-name>   --> If we try to delete the pod, immediately new pod will comeup
 //$ kubectl get po 
 //$ kubectl delete ds <ds-name>
-
-
-
+//If we need out application to be run all the time should go for deployment/deamonset.
 
 
 
