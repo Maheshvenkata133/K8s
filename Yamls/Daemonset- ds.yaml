@@ -28,10 +28,28 @@ spec:
 //$ kubectl delete ds <ds-name>
 //If we need out application to be run all the time should go for deployment/deamonset.
 
+Runs a pod on every node automatically (useful for logging, monitoring, networking).
+Works even if new nodes are added to the cluster.
+Useful for running system services like:
+Node monitoring (e.g., Prometheus Node Exporter)
+Log collection (e.g., Fluentd, Filebeat)
+Networking plugins (e.g., Calico, Cilium)
 
 
+1. Kind & Metadata
+kind: DaemonSet → Ensures that the pod runs on every node in the cluster.
 
+metadata:
+name: example-daemonset → Name of the DaemonSet.
 
+labels: {app: my-daemon} → Labels help in selecting and managing this DaemonSet
+Defines which pods belong to this DaemonSet using labels.
+Any pod with app: my-daemon will be controlled by this DaemonSet.
+
+3. Pod Template (spec.template)
+This defines the pod that will be created on each node.
+
+Under metadata → labels, the label app: my-daemon ensures it matches the selector.
 
 
 
