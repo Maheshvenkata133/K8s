@@ -1,0 +1,17 @@
+// This yaml is for schedule a pod on specific node using nodeSelector
+apiVersion: v1
+kind: Pod
+metadata: 
+  labels:
+    run: ngin
+  name: ngin
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    port:
+      containerPort: 80 
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  nodeSelector:
+     hdd: ssd
