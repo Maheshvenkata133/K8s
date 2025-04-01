@@ -15,3 +15,11 @@ spec:
   restartPolicy: Always
   nodeSelector:
      hdd: ssd
+
+
+//kubectl apply -f pod.yaml     ...> Pod will be created but in pending state
+// Kubectl get no --show-labels
+// kubectl label nodes <node-name> hdd=ssd
+// kubectl get po -o wide  ---> now pod will be up and can see the pod landed on node which is having label hdd=ssd
+// kubectl label nodes <node-name> hdd-   --> Now label got removed and pod will be in pending state.
+// kubectl get po 
