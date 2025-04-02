@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: probe-demo
+spec:
+  containers:
+  - name: my-app
+    image: my-app-image
+    ports:
+    - containerPort: 8080
+    livenessProbe:
+      httpGet:
+        path: /health
+        port: 8080
+      initialDelaySeconds: 10
+      periodSeconds: 5
+    readinessProbe:
+      httpGet:
+        path: /health
+        port: 8080
+      initialDelaySeconds: 5
+      periodSeconds: 3
+
+
+# LivenessProbe  - Checks if container is alive                                                              
+---------------
+# Kubernetes will send an HTTP request to check if the container is alive.
+The request is sent to:
+Path: /health
+Port: 8080
+# Checks if contianer is alive for given periodSeconds after the initial delay seconds
+# If the app gets stucks, the livenessProbe gets fails, and k8s restarts the pod/container.
+If the probe fails too soon, increase initialDelaySeconds.
+✔ If your app takes time to recover, increase periodSeconds.
+
+# ReadinessProbe: - 	Checks if container is ready to accept traffic
+-----------------
+# Similar to the livenessProbe, this probe sends an HTTP request to: path:/health, port:8080.
+# If the response is ok, the pod stays in the load balancer.
+# If the request fails the pod is removed from load balancing until it recovers and stops receving the traffic but is not restarted.
+# common use cases: App needs time to warm up, DB connection issue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
