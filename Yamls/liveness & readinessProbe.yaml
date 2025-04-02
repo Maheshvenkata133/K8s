@@ -30,7 +30,7 @@ Path: /health
 Port: 8080
 # Checks if contianer is alive for given periodSeconds after the initial delay seconds
 # If the app gets stucks, the livenessProbe gets fails, and k8s restarts the pod/container.
-If the probe fails too soon, increase initialDelaySeconds.
+✔ If the probe fails too soon, increase initialDelaySeconds.
 ✔ If your app takes time to recover, increase periodSeconds.
 
 # ReadinessProbe: - 	Checks if container is ready to accept traffic
@@ -39,6 +39,41 @@ If the probe fails too soon, increase initialDelaySeconds.
 # If the response is ok, the pod stays in the load balancer.
 # If the request fails the pod is removed from load balancing until it recovers and stops receving the traffic but is not restarted.
 # common use cases: App needs time to warm up, DB connection issue
+✔ If readiness probe fails too soon, increase initialDelaySeconds.
+✔ If the app is slow to recover, increase periodSeconds.
+
+# Debugging LivenessProbe:
+check logs: 
+$ kubectl describe pod <pod-name>
+$ kubectl logs <pod-name>
+$ kubectl get events     ---> to check all events
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
