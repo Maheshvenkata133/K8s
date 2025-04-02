@@ -1,0 +1,27 @@
+# Here i am creating the job object using imperative command
+# If we want to run a specific task for a specific period of time use this job object.
+$ kubectl create cj myjob --image=ubuntu:20.04 --dry-run=client -o yaml -- /bin/sh -c "sleep 10" > job.yaml
+$ vi job.yaml
+$ kubectl apply -f job.yaml
+$ kubectl get all 
+$ watch kubectl get all   --> can see the job status and all pods
+$ kubectl get jobs
+$ kubectl describe job <job-name> -n <name-space>   //To get detailed information about job
+$ kubectl logs -f job/<job-name> -n <name-space>
+$ kubectl get job -o wide   //To check job status and history
+$ kubectl get pods --selector=job-name=<job-name> -n <namespace>      // To check associated pods
+$ kubectl logs -f <pod-name> -n <name-space>
+$ kubectl delete job myjob
+
+# If we want to run our job multiple times then:
+$ vi job.yaml
+	In the same file under spec:
+							             completions:3
+                           paralleisms: 2
+                           metadata:
+							    
+$ kubectl apply -f job.yaml
+$ kubectl get all
+$ watch kubectl get all 
+$ kubectl delete job myjob
+
