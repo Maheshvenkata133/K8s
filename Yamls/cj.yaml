@@ -1,0 +1,13 @@
+# To schedule a job at specific point of time:
+$ kubectl create cj myjob --image=ubuntu:20.04 --schedule= "*/1 * * * *" --dry-run=client -- /bin/sh -o yaml -c "sleep 10" > cj.yaml 
+$ kubectl apply -f cj.yaml
+$ kubectl get all 
+$ watch kubectl get all
+# If we want to run multiple times then under spec in yaml file
+ spec:
+   completions: 3
+$ kubectl delete cj myjob
+$ kubectl apply -f cj.yaml
+$ kubectl get all 
+$ watch kubectl get all 
+$ kubectl delete cj myjob
