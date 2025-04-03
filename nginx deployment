@@ -1,0 +1,39 @@
+# Create a YAML File for the Nginx Pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+#Deploy the Pod
+# kubectl apply -f nginx-pod
+# kubectl get po
+# kubectl logs nginx-pod
+#  Expose the Pod to Access from Browser
+# Create a service file nginx-service.yaml
+----
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort  # Change to LoadBalancer if using cloud
+
+# kubectl apply -f nginx-service 
+# kubectl get svc nginx-service
+# Open browser http://<node-ip>:<port>
+# Option 2: Use Port Forwarding
+# kubectl port-forward pod/nginx-pod 8080:80
+
