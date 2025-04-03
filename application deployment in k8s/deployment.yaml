@@ -1,0 +1,32 @@
+# Before deploying ensure we are having following:
+# kubernetes cluster, kubectl installed and configured (should list the nodes), A containerized application (eg: docker image stored in registry like docker hub)
+
+# 1. Create k8s deployment    ---> Ensures that specified no.of application replicas are running.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  labels:
+    app: my-app
+spec:
+  replicas: 3  # Number of pod replicas
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: myrepo/myapp:v1  # Replace with your container image
+        ports:
+        - containerPort: 8080  # Ensure it matches the app's exposed port
+        livenessProbe:  # Optional health check
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
