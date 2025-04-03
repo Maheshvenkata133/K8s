@@ -30,3 +30,13 @@ spec:
             port: 8080
           initialDelaySeconds: 10
           periodSeconds: 5
+envFrom:
+  - configMapRef:
+      name: my-app-config
+env:
+  - name: DB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: my-app-secret
+        key: DB_PASSWORD
+
