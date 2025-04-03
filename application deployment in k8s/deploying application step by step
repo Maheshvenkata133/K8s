@@ -1,0 +1,84 @@
+
+# 1. Create k8s deployment:    ---> Ensures that specified no.of application replicas are running.
+# $ kubectl apply -f deployment.yaml
+# $ kubectl get deployments
+# $ kubectl get po
+
+# 2. Expose the Application Using a Service:
+# $ kubectl apply -f service.yaml 
+# $ $ kubectl get services
+# For external access, change ClusterIP to:
+# NodePort (exposes a port on each node)
+# LoadBalancer (for cloud-based Kubernetes)
+# Ingress (for domain-based routing)
+
+# 3. (Optional) Use an Ingress for External Access
+# $ kubectl apply -f ingress.yaml
+# $ kubectl get ingress
+# 🔹 Ensure your cluster has an Ingress Controller like Nginx Ingress.
+
+# 4. Manage Configurations Using ConfigMaps & Secrets
+# $ kubectl apply -f configmap.yaml
+#  Mount it as environment variables in deployment.yaml:
+# Create secret.yaml and mount it in deployment.yaml
+# $ kubectl apply -f secrets.yaml
+
+# 5. Kubernetes auto-scales applications based on CPU/memory.
+# $ kubectl apply -f hpa.yaml
+# $ kubectl get hpa
+
+# 6.Monitor & Troubleshoot the Deployment
+# $ kubectl logs -f <pod-name>
+# $ kubectl describe pod <pod-name>
+# $ kubectl exec -it pod <pod-name> -- /bin/sh
+# Check Cluster Resources
+# $ kubectl top pods
+# $ kubectl top nodes 
+
+# 7. Rolling Updates & Rollbacks
+# Kubernetes supports zero-downtime updates using rolling updates.
+# $ kubectl set image deployment/my-app my-app=myrepo/myapp:v2
+# $ kubectl rollout status deployment/my-app
+# $ kubectl rollout undo deployment/my-app
+
+# 8. Clean Up Resources
+# $ kubectl delete -f deployment.yaml -f service.yaml -f ingress.yaml 
+
+# 9. Automate Deployment with ArgoCD or Helm
+In production, use ArgoCD or Helm charts for declarative and automated deployments.
+
+📌 ArgoCD:
+
+Push YAML files to Git.
+
+ArgoCD automatically deploys them.
+---------------------------------------
+
+
+🚀 Steps to Deploy an App in Kubernetes:
+
+Containerize the app (Docker image).
+
+Create a Deployment to manage replicas.
+
+Expose the app using a Service (ClusterIP, NodePort, LoadBalancer, Ingress).
+
+Use ConfigMaps & Secrets for configurations.
+
+Enable Scaling (HPA for auto-scaling).
+
+Monitor & Debug issues.
+
+Perform Rolling Updates & Rollbacks as needed.
+
+Use GitOps tools like ArgoCD for automation.
+
+
+
+
+
+
+
+
+
+
