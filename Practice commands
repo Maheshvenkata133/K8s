@@ -35,8 +35,15 @@ This will evict all non-daemonset pods and reschedule them on other nodes.
 
 //$ kubectl uncordon <node-name>   --> Now it is ready for scheduling
 //$ kubectl get nodes
+--------------------------------------------------------------------------------
+$ kubectl get pods -A | egrep -i -v 'Completed|running' |grep -i imagepull 
+# k get pods -A → Lists all pods in all namespaces.
+# egrep -i -v 'completed|running' → Filters out Completed and Running pods.
+$ grep -i imagepull → Filters for pods failing due to ImagePullBackOff errors.
 
-
+$ kubectl get pods -Ao wide | grep txnserver
+# k get pods -Ao wide → Lists all pods across namespaces with detailed node info.
+# grep txnserver → Filters for txnserver pods.
 
 
 
