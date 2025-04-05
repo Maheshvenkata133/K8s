@@ -45,7 +45,11 @@ $ kubectl get pods -Ao wide | grep txnserver
 # k get pods -Ao wide → Lists all pods across namespaces with detailed node info.
 # grep txnserver → Filters for txnserver pods.
 
-
+-----------------------------------------------------------------------
+# kubectl -n <namespace> rollout restart deployment <deployment-name>     ---> Restart the services
+$ kubectl -n <namespace> rollout undo deployment <deployment-name>
+$ kubectl -n <namespace> rollout history deployment <deployment-name>
+$ kubectl -n default rollout history deployment my-app-deployment --revision=2  ---> rollback example
 
 
 
