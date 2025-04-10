@@ -47,6 +47,7 @@ $ kubectl get pods -Ao wide | grep txnserver
 
 -----------------------------------------------------------------------
 # kubectl -n <namespace> rollout restart deployment <deployment-name>     ---> Restart the services
+$ kubectl rollout restart deployment acs -n s2 
 $ kubectl -n <namespace> rollout undo deployment <deployment-name>
 $ kubectl -n <namespace> rollout history deployment <deployment-name>
 $ kubectl -n default rollout history deployment my-app-deployment --revision=2  ---> rollback example
