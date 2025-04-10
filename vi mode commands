@@ -1,0 +1,44 @@
+Basic Vim Modes
+Mode	Description
+Normal	Navigation, copy/paste, etc. (default)
+Insert	Typing text (i to enter)
+Visual	Selecting text (v to enter)
+Command	Running commands (: to enter)
+🔧 Most Useful Commands for Exam
+✍️ Enter Insert Mode
+Key	Action
+i	Insert before cursor
+I	Insert at start of line
+a	Append after cursor
+A	Append at end of line
+o	Open new line below
+O	Open new line above
+💾 Save & Exit
+Command	Action
+:w	Save (write) file
+:q	Quit
+:wq or ZZ	Save and quit
+:q!	Quit without saving
+🧭 Navigation
+Key	Action
+h	Left
+l	Right
+j	Down
+k	Up
+gg	Go to start of file
+G	Go to end of file
+:n	Go to line number n
+🔍 Search
+Command	Action
+/term	Search forward for "term"
+?term	Search backward for "term"
+n	Next search result
+N	Previous search result
+✂️ Copy / Paste / Undo
+Command	Action
+yy	Yank (copy) line
+p	Paste below
+P	Paste above
+dd	Delete (cut) line
+u	Undo
+Ctrl+r	Redo
