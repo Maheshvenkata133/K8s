@@ -50,7 +50,9 @@ $ kubectl get pods -Ao wide | grep txnserver
 $ kubectl -n <namespace> rollout undo deployment <deployment-name>
 $ kubectl -n <namespace> rollout history deployment <deployment-name>
 $ kubectl -n default rollout history deployment my-app-deployment --revision=2  ---> rollback example
-
+-----------------------------------------------------------------------
+$ kubectl config view --minify --output 'jsonpath={..namespace}'    ---->To display the current namespace
+$ kubectl config set-context --current --namespace=argo-cd       ----->To Set a Default Namespace
 
 
 
